@@ -6,7 +6,7 @@ import noimage from "../assets/no-image.png";
 const VideoCard = ({ video }) => {
   // console.log(video);
   return (
-    <div className=" flex justify-center items-center max-w-[100%]">
+    <div className=" flex mt-3 w-[20rem] gap-20">
       <Link
         to={video.id.videoId ? `/video/${video.id.videoId}` : ""}
         className=""
