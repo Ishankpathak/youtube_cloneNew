@@ -13,14 +13,15 @@ const Feed = () => {
     );
   }, [selectedCategory]);
   return (
-    <div className="bg-black  text-white">
+    <div className="bg-black flex md:gap-20 text-white relative max-w-[100%] overflow-hidden">
       <div>
         <SideBar
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
       </div>
-      <div className=" mt-2 ml-2  font-medium text-lg">
+
+      <div className="  ml-2 font-medium text-lg">
         {selectedCategory} <span className=" text-red-500">videos</span>
         <Videos videos={videos} />
       </div>

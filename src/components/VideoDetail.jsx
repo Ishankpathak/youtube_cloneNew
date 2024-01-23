@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import ReactPlayer from "react-player";
 import Videos from "./Videos";
+import { AiFillLike } from "react-icons/ai";
+import { MdOutlineQuickreply } from "react-icons/md";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -13,7 +15,7 @@ const VideoDetail = () => {
 
   const { id } = useParams();
   // console.log(videoDetail);
-  console.log(comments);
+  // console.log(comments);
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
@@ -28,7 +30,7 @@ const VideoDetail = () => {
   }, [id]);
   return (
     <div className="flex bg-black text-white flex-wrap lg:flex-nowrap">
-      <div className="w-[100%] p-3 md:pl-10" style={{maxWidth:"100%"}}>
+      <div className="w-[100%] p-3 md:pl-10" style={{ maxWidth: "100%" }}>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${id}`}
           controls
@@ -68,7 +70,7 @@ const VideoDetail = () => {
               <div>
                 {comments.map((item) => {
                   return (
-                    <li key={item?.id} className="flex items-center mt-4 gap-2">
+                    <li key={item?.id} className="flex items-center mt-4 gap-3">
                       <img
                         src={
                           item?.snippet?.topLevelComment?.snippet
@@ -86,6 +88,18 @@ const VideoDetail = () => {
                         </span>
                         <span>
                           {item?.snippet?.topLevelComment?.snippet?.textDisplay}
+                        </span>
+                        <span className=" flex gap-5 items-center mt-2">
+                          <span className=" flex items-center gap-1">
+                            <AiFillLike />
+                            {item?.snippet?.topLevelComment?.snippet?.likeCount}
+                          </span>
+
+                          <span>
+                            {new Date(
+                              item?.snippet?.topLevelComment?.snippet.updatedAt
+                            ).toLocaleTimeString()}
+                          </span>
                         </span>
                       </div>
                     </li>

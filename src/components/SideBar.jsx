@@ -2,7 +2,7 @@ import { categories } from "../utils/constants";
 
 const SideBar = ({ selectedCategory, setSelectedCategory }) => {
   return (
-    <div className=" flex overflow-auto p-1 items-center ">
+    <div className=" flex sm:flex-row md:flex-col lg:flex-col absolute gap-5 overflow-auto mt-5 p-1 items-center max-w-[100%]">
       {categories.map((item) => (
         <span
           onClick={() => setSelectedCategory(item.name)}
