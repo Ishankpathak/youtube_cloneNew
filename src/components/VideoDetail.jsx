@@ -68,7 +68,7 @@ const VideoDetail = () => {
           <ul>
             {showComments && (
               <div>
-                {comments.map((item) => {
+                {comments?.map((item) => {
                   return (
                     <li key={item?.id} className="flex items-center mt-4 gap-3">
                       <img
